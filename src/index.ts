@@ -53,10 +53,6 @@ async function runGame() {
       console.log(`Вас похити инопланетяне. Игра окончена`);
       state.health = 0;
       break;
-    } else {
-      console.log(`Игра окончена`);
-      state.health = 0;
-      break;
     }
   }
 
