@@ -41,17 +41,21 @@ async function runGame() {
 >`),
         );
         state.scenario = "end";
+        state.health = 0;
         break;
       case "right":
         state.scenario = "end";
+        state.health = 100;
         break;
     }
 
     if (state.scenario === "end") {
       console.log(`Вас похити инопланетяне. Игра окончена`);
+      state.health = 0;
       break;
     } else {
       console.log(`Игра окончена`);
+      state.health = 0;
       break;
     }
   }
