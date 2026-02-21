@@ -1,15 +1,11 @@
 import readline from "node:readline/promises";
+import State from "./State.js";
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
-type Scenario = "start" | "left" | "right" | "back" | "forward" | "up" | "end";
-
-class State {
-  scenario: Scenario = "start";
-}
 const state = new State();
 
 async function runGame() {
@@ -29,7 +25,7 @@ async function runGame() {
           break;
         default:
           console.log("Вас похити инопланетяне. Игра окончена");
-          return false;
+          break;
       }
     }
 
@@ -37,6 +33,7 @@ async function runGame() {
       case "left":
         console.log(`Ты пошёл налево. Нашёл монету. Деньги: 10
             `);
+        state.money += 10;
         answer = Number(
           await rl.question(`Идти 
 1.дальше
@@ -52,12 +49,17 @@ async function runGame() {
 
     if (state.scenario === "end") {
       console.log(`Вас похити инопланетяне. Игра окончена`);
-      return false;
+      break;
     } else {
       console.log(`Игра окончена`);
-      return false;
+      break;
     }
   }
+
+  let { money, health } = state;
+  console.log(`Ваш статус на конец игры money=${money} health=${health} `);
+
+  rl.close();
 }
 
 runGame();

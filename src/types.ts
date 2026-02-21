@@ -1,0 +1,1 @@
+export type Scenario = "start" | "left" | "right" | "back" | "forward" | "up" | "end";
