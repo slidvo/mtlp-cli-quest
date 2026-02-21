@@ -60,4 +60,33 @@ async function runGame() {
   rl.close();
 }
 
+async function sceneStart() {
+  const answer = Number(
+    await rl.question("Ты стоишь у двери. Идти \n1.налево\n2.направо?\n>"),
+  );
+  switch (answer) {
+    case 1:
+      state.scenario = "left";
+      break;
+    case 2:
+      state.scenario = "right";
+      break;
+    default:
+      console.log("Вас похитили инопланетяне. Игра окончена")
+      state.scenario="end"
+      state.health=1
+      state.money=0
+  }
+}
+
+async function sceneLeft(){
+
+}
+
+async function sceneRight(){
+
+}
+
+
+
 runGame();
