@@ -45,7 +45,7 @@ async function runGame() {
         break;
       case "right":
         state.scenario = "end";
-        state.health = 100;
+        state.health -= 50;
         break;
     }
 
