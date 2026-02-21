@@ -1,12 +1,10 @@
 import readline from "node:readline/promises";
-import State from "./State.js";
+import { state } from "./State.js";
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
-
-const state = new State();
 
 async function runGame() {
   let answer: number = 0;

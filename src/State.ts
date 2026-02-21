@@ -1,6 +1,12 @@
 import type { Scenario } from "./types.js";
-export default class State {
-  scenario: Scenario = "start";
-  money: number = 0;
-  health: number = 100;
+export default interface State {
+  scenario: Scenario;
+  money: number;
+  health: number;
 }
+
+export const state: State = {
+  scenario: "start",
+  money: 0,
+  health: 100,
+};
