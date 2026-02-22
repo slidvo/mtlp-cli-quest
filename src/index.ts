@@ -2,18 +2,22 @@ import { rl } from "./utils/input.js";
 import { state } from "./State.js";
 import { sceneStart, sceneLeft, sceneRight } from "./scenes.js";
 
+type SceneFn = () => Promise<void>;
+
 async function runGame() {
+  const scenes = new Map<string, SceneFn>([
+    ["start", sceneStart],
+    ["left", sceneLeft],
+    ["right", sceneRight],
+  ]);
+
   while (state.scenario !== "end") {
-    switch (state.scenario) {
-      case "start":
-        await sceneStart();
-        break;
-      case "left":
-        await sceneLeft();
-        break;
-      case "right":
-        await sceneRight();
-        break;
+    const scene = scenes.get(state.scenario);
+    if (scene) {
+      await scene();
+    } else {
+      console.log(`Сцена ${state.scenario} не найдена`);
+      break;
     }
   }
 
