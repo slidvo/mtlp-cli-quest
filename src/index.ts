@@ -1,4 +1,4 @@
-import { rl } from "./input.js";
+import { rl } from "./utils/input.js";
 import { state } from "./State.js";
 import { sceneStart, sceneLeft, sceneRight } from "./scenes.js";
 

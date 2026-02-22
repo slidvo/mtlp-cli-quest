@@ -1,5 +1,5 @@
 import { state } from "./State.js";
-import { rl } from "./input.js";
+import { rl } from "./utils/input.js";
 
 export async function sceneStart() {
   const answer = Number(
