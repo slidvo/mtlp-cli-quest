@@ -7,56 +7,22 @@ const rl = readline.createInterface({
 });
 
 async function runGame() {
-  let answer: number = 0;
-  while (true) {
-    if (state.scenario === "start") {
-      answer = Number(
-        await rl.question("Ты стоишь у двери. Идти \n1.налево\n2.направо?\n>"),
-      );
-
-      switch (true) {
-        case answer === 1:
-          state.scenario = "left";
-          break;
-        case answer === 2:
-          state.scenario = "right";
-          break;
-        default:
-          console.log("Вас похити инопланетяне. Игра окончена");
-          break;
-      }
-    }
-
+  while (state.scenario !== "end") {
     switch (state.scenario) {
+      case "start":
+        await sceneStart();
+        break;
       case "left":
-        console.log(`Ты пошёл налево. Нашёл монету. Деньги: 10
-            `);
-        state.money += 10;
-        answer = Number(
-          await rl.question(`Идти 
-1.дальше
-2.вернуться
->`),
-        );
-        state.scenario = "end";
-        state.health = 0;
+        await sceneLeft();
         break;
       case "right":
-        state.scenario = "end";
-        state.health -= 50;
+        await sceneRight();
         break;
-    }
-
-    if (state.scenario === "end") {
-      console.log(`Вас похити инопланетяне. Игра окончена`);
-      state.health = 0;
-      break;
     }
   }
 
-  let { money, health } = state;
+  const { money, health } = state;
   console.log(`Ваш статус на конец игры money=${money} health=${health} `);
-
   rl.close();
 }
 
@@ -72,21 +38,32 @@ async function sceneStart() {
       state.scenario = "right";
       break;
     default:
-      console.log("Вас похитили инопланетяне. Игра окончена")
-      state.scenario="end"
-      state.health=1
-      state.money=0
+      console.log("Вас похитили инопланетяне. Игра окончена");
+      state.scenario = "end";
+      state.health = 1;
+      state.money = 0;
   }
 }
 
-async function sceneLeft(){
-
+async function sceneLeft() {
+  console.log(`Ты пошёл налево. Нашёл монету. Деньги: 10
+            `);
+  state.money += 10;
+  const answer = Number(await rl.question(`Идти\n1.дальше\n2.вернуться> `));
+  switch (answer) {
+    case 1:
+      state.scenario = "end";
+      state.health = 0;
+      break;
+    case 2:
+      state.scenario = "end";
+      state.health -= 50;
+      break;
+  }
 }
-
-async function sceneRight(){
-
+async function sceneRight() {
+  state.scenario = "end";
+  state.health -= 50;
 }
-
-
 
 runGame();
