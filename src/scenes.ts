@@ -1,4 +1,5 @@
 import { state } from "./State.js";
+import type { SceneFn } from "./types.js";
 import { rl } from "./utils/input.js";
 
 export async function sceneStart() {
@@ -40,3 +41,9 @@ export async function sceneRight() {
   state.scenario = "end";
   state.health -= 50;
 }
+
+export const scenesMap = new Map<string, SceneFn>([
+  ["start", sceneStart],
+  ["left", sceneLeft],
+  ["right", sceneRight],
+]);

@@ -1,18 +1,10 @@
 import { rl } from "./utils/input.js";
 import { state } from "./State.js";
-import { sceneStart, sceneLeft, sceneRight } from "./scenes.js";
-
-type SceneFn = () => Promise<void>;
+import { scenesMap } from "./scenes.js";
 
 async function runGame() {
-  const scenes = new Map<string, SceneFn>([
-    ["start", sceneStart],
-    ["left", sceneLeft],
-    ["right", sceneRight],
-  ]);
-
   while (state.scenario !== "end") {
-    const scene = scenes.get(state.scenario);
+    const scene = scenesMap.get(state.scenario);
     if (scene) {
       await scene();
     } else {
