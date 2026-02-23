@@ -1,5 +1,4 @@
 import { SceneTitle } from "./enums/indext.js";
-import { rl } from "./utils/input.js";
 import type State from "./State.js";
 
 const { START, LEFT, RIGHT, FORWARD, END } = SceneTitle;
