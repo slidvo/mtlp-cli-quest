@@ -1,12 +1,12 @@
-import type { Scenario } from "./types.js";
+import { SceneTitle } from "./enums/indext.js";
 export default interface State {
-  scenario: Scenario;
+  sceneTitle: SceneTitle;
   money: number;
   health: number;
 }
 
 export const state: State = {
-  scenario: "start",
+  sceneTitle: SceneTitle.START,
   money: 0,
   health: 100,
 };
