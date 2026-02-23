@@ -45,3 +45,48 @@
 | `infra` | 🧱 | `:bricks:` | Инфраструктура (облако, сервера, сеть) |
 | `monitoring` | 📈 | `:chart_with_upwards_trend:` | Мониторинг, метрики, алерты |
 | `security` | 🔒️ | `:lock:` | Безопасность, уязвимости, шифрование |
+
+
+<details>
+<summary>./vscode/settings.json</summary>
+
+```jsonc
+{
+    // .vscode/settings.json
+    "conventionalCommits.scopes": [
+        "core",
+        "config",
+        "core",
+        "config",
+        "deps",
+        "scripts",
+        "build",
+        "ci",
+        "docs",
+        "tests",
+        "types",
+        "utils",
+        "env",
+        "lint",
+        "ui",
+        "components",
+        "layout",
+        "styles",
+        "state",
+        "api",
+        "router",
+        "db",
+        "auth",
+        "services",
+        "models",
+        "middleware",
+        "logging",
+        "docker",
+        "k8s",
+        "infra",
+        "monitoring",
+        "security"
+    ]
+}
+```
+</details>
