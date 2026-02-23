@@ -1,4 +1,3 @@
-import { rl } from "./utils/input.js";
 import { state } from "./State.js";
 import { scenesMap } from "./scenes.js";
 import { SceneTitle } from "./enums/SceneTitle.js";
@@ -14,9 +13,7 @@ async function runGame() {
     }
   }
 
-  const { money, health } = state;
-  console.log(`Ваш статус на конец игры money=${money} health=${health} `);
-  rl.close();
+  scenesMap.get(SceneTitle.END)?.();
 }
 
 runGame();

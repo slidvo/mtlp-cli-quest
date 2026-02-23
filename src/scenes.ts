@@ -23,7 +23,6 @@ export async function sceneStart() {
       state.money = 0;
   }
 }
-
 export async function sceneLeft() {
   console.log(`Ты пошёл налево. Нашёл монету. Деньги: 10
             `);
@@ -44,9 +43,15 @@ export async function sceneRight() {
   state.sceneTitle = END;
   state.health -= 50;
 }
+export async function sceneEnd() {
+  const { money, health } = state;
+  console.log(`Ваш статус на конец игры money=${money} health=${health} `);
+  rl.close();
+}
 
 export const scenesMap = new Map<SceneTitle, SceneFn>([
   [SceneTitle.START, sceneStart],
   [SceneTitle.LEFT, sceneLeft],
   [SceneTitle.RIGHT, sceneRight],
+  [SceneTitle.END, sceneEnd],
 ]);
