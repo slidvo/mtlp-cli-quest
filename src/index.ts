@@ -1,5 +1,5 @@
 import { state } from "./State.js";
-import { scenesMap } from "./scenes.js";
+import { scenesMap } from "./scenes/index.js";
 import { SceneTitle } from "./enums/SceneTitle.js";
 import { rl } from "./utils/input.js";
 
