@@ -3,18 +3,16 @@ import type { Scene } from "../model/Scene.js";
 
 export const sceneLeft: Scene = {
   id: SceneTitle.LEFT,
-  text: "Ты пошел налево и нашёл 10 золотых монет.\n>",
-  effect: (state) => {
-    state.money += 10;
-  },
+  text: `Вы сворачиваете налево, и тропинка выводит вас к небольшой хижине.
+Из окна виден тусклый свет, а дверь приоткрыта.`,
   choices: [
     {
-      label: "Идти прямо.",
-      next: SceneTitle.FORWARD,
+      label: "Войти в хижину",
+      next: SceneTitle.ENTER_THE_HUT_BAD_FINAL,
     },
     {
-      label: "Вернуться назазд.",
-      next: SceneTitle.START,
+      label: "Постучать в дверь",
+      next: SceneTitle.ENTER_THE_HUT,
     },
   ],
 };
