@@ -3,16 +3,18 @@ import type { Scene } from "../model/Scene.js";
 
 export const sceneStart: Scene = {
   id: SceneTitle.START,
-  text: "Ты стоишь у двери\n>",
+  text: `Вы просыпаетесь в центре густого леса, окруженного туманом.
+Единственный звук, который вы слышите, — это ветер, шелестящий в листве деревьев.
+Перед вами две тропинки. Одна ведет направо, другая — налево.`,
   effect: (_state) => {},
   choices: [
     {
-      label: "Идти налево",
-      next: SceneTitle.LEFT,
+      label: "Направо",
+      next: SceneTitle.RIGHT,
     },
     {
-      label: "Идти на право",
-      next: SceneTitle.RIGHT,
+      label: "Налево",
+      next: SceneTitle.LEFT,
     },
   ],
 };

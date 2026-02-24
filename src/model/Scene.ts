@@ -5,6 +5,7 @@ import type { Choice } from "./Choice.js";
 export interface Scene {
   id: SceneTitle;
   text: string;
-  effect: (state: State) => void;
+  effect?: (state: State) => void;
   choices: Array<Choice>;
+  next?: SceneTitle;
 }
